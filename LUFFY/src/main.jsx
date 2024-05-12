@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, redirect, RouterProvider } from "react-router-dom";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./utils/query.js";
+import "./main.css";
 
 //pages
 import RootLayout from "./pages/RootLayout.jsx";
