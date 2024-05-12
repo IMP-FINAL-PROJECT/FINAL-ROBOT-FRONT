@@ -4,7 +4,7 @@ export default {
     theme: {
       extend: {
         colors: {
-          cherry: "#A494B0",
+          lightpurple: "#A494B0",
           pink: "#FFF3DD",
           beige: "#FFF3DD",
           skyblue: "#E0F4FF",
