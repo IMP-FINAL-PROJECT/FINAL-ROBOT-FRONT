@@ -1,13 +1,13 @@
 import { Outlet, Navigate } from "react-router-dom";
 import NavBar from "../components/Common/NavBar";
 import useUserStore from "../stores/useUserStore";
-import useCoupleStore from "../stores/useCounselStore";
+import useCounselStore from "../stores/useCounselStore";
 import { useEffect } from "react";
 
 export default function RootLayout() {
   const { userId } = useUserStore();
 
-  const { reset: coupleReset } = useCoupleStore();
+  const { reset: coupleReset } = useCounselStore();
   const { reset: userReset } = useUserStore();
 
   useEffect(() => {
@@ -16,7 +16,7 @@ export default function RootLayout() {
 
   return (
     <>
-      {!userId ? (
+      {userId ? (
         <div className="grid grid-cols-mainLayout gap-5">
           <NavBar />
           <div className="col-span-10 mx-5">

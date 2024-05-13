@@ -5,10 +5,13 @@ export default {
       extend: {
         colors: {
           lightpurple: "#A494B0",
-          pink: "#FFF3DD",
           beige: "#FFF3DD",
-          skyblue: "#E0F4FF",
+          beige10: "#fff5dd ",
+          skyblue10: "#E0F4FF",
+          skyblue20:"#dde9ff",
+          skyblue30:"#ddfff3",
           subpuple: "#B893F5",
+          subpuple10: "#e2ddff",
           green:"#A8D885",
           "text-black": "#505050",
           "text-gray": "#9D9D9D",

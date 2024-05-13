@@ -8,14 +8,14 @@ const initalState = {
 	user2: null,
 	startdate: null,
 	userInfos: null,
-	question: null,
+	quote: null,
 };
 
 const useCounselStore = create(
 	persist(
 		devtools((set) => ({
 			...initalState,
-			setCounselInfo: (counselId, code, user1, user2, startdate, userInfos, question) => {
+			setCounselInfo: (counselId, code, user1, user2, startdate, userInfos, quote) => {
 				set(() => ({
 					counselId,
 					code,
@@ -23,7 +23,7 @@ const useCounselStore = create(
 					user2,
 					startdate,
 					userInfos,
-					question,
+					quote,
 				}));
 			},
 			reset: () => {

@@ -27,7 +27,7 @@ export default function NavBar() {
       <Link to="/">
         <img src={MainLogo} alt="Main logo" className="mb-0" />
       </Link>
-      <div className="grid grid-rows-6 gap-[3vw] mt-[192px] bg-beige" id="navbar-main">
+      <div className="grid grid-rows-6 gap-[1.5vw] mt-[192px] bg-beige" id="navbar-main">
         {/* 각 NavLink 컴포넌트를 랜더링합니다. isActive prop을 통해 스타일을 조정합니다. */}
         <NavLink
           to="luffycall"
