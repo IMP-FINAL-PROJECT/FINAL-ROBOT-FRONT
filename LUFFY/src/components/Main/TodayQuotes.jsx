@@ -5,7 +5,7 @@ import useCounselStore from "../../stores/useCounselStore";
 
 export default function TodayQuotes() {
   const { quote } = useCounselStore();
-  const [color, setColor] = useState("bg-beige20");
+  const [color, setColor] = useState("bg-beige10");
   const boxVariants = {
     hover: {
       scale: 1.1,
@@ -16,11 +16,11 @@ export default function TodayQuotes() {
       <motion.div
         whileHover="hover"
         variants={boxVariants}
-        className="flex relative ml-[5vw] w-[40vw] h-[7vw]"
+        className="flex relative ml-[5vw] w-[40vw] h-[7vw] "
         onHoverStart={(event, info) => {setColor("bg-beige10")}}
-        onHoverEnd={(event, info) => {setColor("bg-beige20")}}
+        onHoverEnd={(event, info) => {setColor("bg-beige10")}}
       >
-        <div className={`${color} w-[36vw] h-[5vw] rounded-[20px] flex items-center`}>
+        <div className={`${color} w-[36vw] h-[5vw] rounded-[20px] flex items-center shadow-md`}>
           <p className="text-[1.2vw] font-bold text-text-gray ml-[1vw]">
             오늘의 명언
           </p>

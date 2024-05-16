@@ -10,7 +10,14 @@ import RootLayout from "./pages/RootLayout.jsx";
 import UserMain from "./pages/UserPages/UserMain.jsx";
 import Login from "./pages/UserPages/Login";
 import Signup from "./pages/UserPages/Signup";
+import Index from "./pages/MainPages/Index.jsx";
+import LuffyCallPage from "./pages/LuffyCallPages/LuffyCallPage.jsx";
+import LuffyPage from "./pages/MainPages/LuffyPage.jsx";
+import TodayQuotesPage from "./pages/MainPages/TodayQuotesPage.jsx";
 
+// In your component or App.js
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 
 
 const router = createBrowserRouter([
@@ -18,6 +25,27 @@ const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <RootLayout />,
+    children: [
+			{
+				path: "",
+				element: <Index />,
+				children: [
+					{
+						path: "luffy",
+						element: <LuffyPage />,
+					},
+					{
+						path: "today",
+						element: <TodayQuotesPage />,
+					},
+					
+				]
+      },
+	  {
+		path: "luffycall",
+		element: <LuffyCallPage />,
+	},
+    ]
   },
   {
 		path: "/user",

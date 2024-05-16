@@ -7,7 +7,7 @@ import { useEffect } from "react";
 export default function RootLayout() {
   const { userId } = useUserStore();
 
-  const { reset: coupleReset } = useCounselStore();
+  const { reset: counselReset } = useCounselStore();
   const { reset: userReset } = useUserStore();
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export default function RootLayout() {
   return (
     <>
       {userId ? (
-        <div className="grid grid-cols-mainLayout gap-5">
+        <div className="grid grid-cols-mainLayout gap-5 bg-beige20">
           <NavBar />
           <div className="col-span-10 mx-5">
             <Outlet />

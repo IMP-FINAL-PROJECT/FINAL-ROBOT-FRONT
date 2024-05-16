@@ -7,6 +7,7 @@ import LuffyLv3 from "../../assets/Luffy/LuffyLv3.png";
 import useCounselStore from "../../stores/useCounselStore";
 import useUserStore from "../../stores/useUserStore";
 import { fetchExpLevel } from "../../services/luffyService";
+import luffy_bg from "../../assets/luffy_bg.png"
 
 const Level = ["아기 러피", "학생 러피", "어른 러피"];
 const LuffyImage = [LuffyLv1, LuffyLv2, LuffyLv3, LuffyLv3, LuffyLv3];
@@ -24,26 +25,33 @@ export default function Luffy({ dday }) {
   if (isLoading) {
     return <div>로딩중</div>;
   }
+  console.log(expLevel);
   return (
     <>
-      <div id="LuffyState" className="col-span-2 flex flex-col items-center">
-        <div id="LuffyImg">
+      <div id="LuffyState" className="w-[15vw] h-[15vw] rounded-[50px] shadow-lg  flex flex-col leading-10 bg-luffybg" >
+
+        <div className={LuffyImage[expLevel.level]===LuffyLv1?`flex justify-center mt-[1.4vw]`:`flex justify-center mt-[0.1vw]`}>
           <img
-            className="mt-[1vw]"
+            className="mt-[1vw] w-[9vw]  "
             src={LuffyImage[expLevel.level]}
             alt="LuffyImg"
           />
-        </div>
-        <p id="LuffyName" className="text-[1.2vw] text-cherry font-bold">
+           
+          </div>
+          <div className="flex justify-center ">
+        <p id="LuffyName" className="text-[1.2vw] text-lightgray font-bold">
           {Level[expLevel.level]}
         </p>
-        <progress
-          id="LuffyExp"
-          className="LuffyExp h-2 w-[7vw]"
-          max="100"
-          value={expLevel.exp}
-        />
+        </div>
+       
       </div>
+
+    </>
+  );
+}
+
+
+/*
       <div
         id="LuffyDescrption"
         className="h-[15vw] mt-[2vw] col-span-3 flex flex-col items-center justify-around"
@@ -66,6 +74,4 @@ export default function Luffy({ dday }) {
           경험치 기록 보기
         </button>
       </div>
-    </>
-  );
-}
+      */

@@ -39,6 +39,7 @@ export default function Video_Slide() {
     slidesToScroll: 1,
     draggable: true,
     autoplay: true,
+    
     responsive: [
       {
         breakpoint: 1024,
@@ -63,8 +64,9 @@ export default function Video_Slide() {
   return (
     <Slider {...settings} >
       {videoList.map((item, idx) => (
-        <div key={idx} className="mt-5 card">
+        <div key={idx} >
           <video
+            className="w-full h-full object-cover rounded-[20px] shadow-md"
             preload="metadata"
             onClick={(event) => {
               event.preventDefault();

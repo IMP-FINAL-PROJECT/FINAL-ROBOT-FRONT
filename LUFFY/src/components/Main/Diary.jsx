@@ -10,23 +10,18 @@ export default function Diary() {
     const dayOfWeek = dayNames[date.getDay()];  // getDay()는 요일을 숫자로 반환합니다.
 
     return {
-      yearMonth: `${year}년 ${month}월`,
-      dayWithWeekday: `${day} (${dayOfWeek})`
+      yearMonth: `${day}`,
+      dayWithWeekday: `${dayOfWeek}요일`
     };
   };
 
   const date = getFormattedDate();
 
   return (
-    <div>
-      <div className="mt-10 text-center">
-        <p className="text-[1.4vw] text-text-gray mb-[0.5vw]">{date.yearMonth}</p>
-        <p className="mt-10 text-[4vw] text-text-black">{date.dayWithWeekday}</p>
+
+      <div className="w-[15vw] h-[15vw] rounded-[50px] shadow-lg text-center leading-10 bg-white">
+        <p className="text-[2.3vw] text-black mt-[1.4vw]">{date.dayWithWeekday}</p>
+        <p className="mt-[3.6vw] text-black text-[7.5vw]">{date.yearMonth} </p>
       </div>
-      <div className="flex items-center justify-center mt-[1vw]">
-        <img src={DiaryImg} alt="DiaryImg" style={{ width: '3vw', height: '3vw', marginRight: '1vw' }}/>
-        <p className="text-[1.2vw] text-text-black">상담 캘린더</p>
-      </div>
-    </div>
   );
 }
