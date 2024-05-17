@@ -6,7 +6,7 @@ import { useState } from "react";
 import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
-import ModifyModal from "./ModifyModal";
+import ModifyModal from "../Modal/ModifyModal";
 
 export default function UserInfo() {
   const { startdate, userInfos, reset: counselReset } = useCounselStore();
@@ -46,56 +46,20 @@ export default function UserInfo() {
     }&logout_redirect_uri=${location.protocol + "//" + location.host}`;
   }
 
-  let userInfoClassName = `left-[2%] transition-[height] duration-500 absolute w-[18rem]  bg-white my-[25px]  text-[1.5rem] rounded-[40px] shadow-md text-center ${
-    isOpen
-      ? " h-[365px] z-[1]  flex flex-col rounded-[15px] overflow-y-auto"
-      : " h-[4vw]"
-  }`;
+  let userInfoClassName = ` w-[15vw] h-[15vw] rounded-[50px]  text-[1.5rem] shadow-md text-center `;
 
   return (
     <>
       <div id="userInfo" className={userInfoClassName}>
-        <div
-          className={
-            "w-[80%] grid grid-cols-5 ml-[2rem] mt-[1vw] " +
-            (isOpen ? "border-b-2 border-text-gray pb-[10px]" : "") +
-            " hover:cursor-pointer"
-          }
-          onClick={handleClickIsOpen}
-        >
-          <img className="col-span-1" src={myinfo} alt="myinfo" />
-          <p className="col-span-3 my-auto text-text-black hover:text-[#888888]">
-            {myInfo.nickname}
-          </p>
-          <img
-            className={"col-span-1 w-[2vw] my-auto " + (isOpen && "rotate-180")}
-            src={DropdownIcon}
-            alt="DropdownIcon"
-          />
-        </div>
-        {isOpen && (
-          <>
-            <div className="my-[48px] text-text-black flex flex-col items-start ml-[15px] text-[80%]">
-              <p className="mb-[8px]">내 생일 : {myBirth}</p>
-              <p className="mb-[8px]">만남 : {anni}</p>
-              <p className="mb-[8px] text-cherry">
-                체리씨 : {cherryInfo.nickname}
-              </p>
-              <p className=" text-cherry">체리 생일 : {cherryBirth}</p>
-            </div>
-            <div className="flex justify-around text-text-black">
-              <button onClick={() => setOpenModifyModal(true)}>내정보</button>
-              <button onClick={logout}>로그아웃</button>
-            </div>
-          </>
-        )}
 
-        <AnimatePresence>
-          {openModifyModal && (
-            <ModifyModal onClose={CloseModifyModal}></ModifyModal>
-          )}
-        </AnimatePresence>
-      </div>
+          <img className="rounded-[50px] shadow-md w-[15vw] h-[15vw]" src={myinfo} alt="myinfo" />
+
+
+        </div>
+
+
+
+
     </>
   );
 }

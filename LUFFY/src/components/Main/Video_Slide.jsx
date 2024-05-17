@@ -66,7 +66,7 @@ export default function Video_Slide() {
       {videoList.map((item, idx) => (
         <div key={idx} >
           <video
-            className="w-full h-full object-cover rounded-[20px] shadow-md"
+            className="w-full h-[15vw] rounded-[50px] shadow-md"
             preload="metadata"
             onClick={(event) => {
               event.preventDefault();

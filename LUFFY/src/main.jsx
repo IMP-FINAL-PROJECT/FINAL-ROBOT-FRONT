@@ -14,7 +14,11 @@ import Index from "./pages/MainPages/Index.jsx";
 import LuffyCallPage from "./pages/LuffyCallPages/LuffyCallPage.jsx";
 import LuffyPage from "./pages/MainPages/LuffyPage.jsx";
 import TodayQuotesPage from "./pages/MainPages/TodayQuotesPage.jsx";
-
+import UserInfo from "./pages/MainPages/UserInfoPage.jsx";
+import DiaryMonthlyPage from "./pages/DiaryPages/DiaryMonthlyPage.jsx";
+import DiaryYearlyPage from "./pages/DiaryPages/DiaryYearlyPage.jsx";
+import DiaryDailyPage from "./pages/DiaryPages/DiaryDailyPage.jsx";
+import DiaryLayout from "./pages/DiaryPages/DiaryLayout.jsx";
 // In your component or App.js
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
@@ -37,6 +41,28 @@ const router = createBrowserRouter([
 					{
 						path: "today",
 						element: <TodayQuotesPage />,
+					},
+					{
+						path: "UserInfo",
+						element: <UserInfo />,
+					},
+					{
+						path: "diary",
+						element: <DiaryLayout />,
+						children: [
+							{
+								path: "month",
+								element: <DiaryMonthlyPage />,
+							},
+							{
+								path: "year",
+								element: <DiaryYearlyPage />,
+							},
+							{
+								path: "day",
+								element: <DiaryDailyPage />,
+							},
+						],
 					},
 					
 				]

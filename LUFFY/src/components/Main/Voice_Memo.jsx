@@ -50,7 +50,7 @@ export default function Voice_Memo() {
 						<div className="divider  divider-start italic w-[14vw] ml-[0.5vw]">Content</div>
 						<div
 							onClick={showMemo}
-							className="max-w-[17vw] w-[17vw] text-center px-[4vw] text-[0.8vw]"
+							className="max-w-[17vw] w-[17vw] text-start px-[1.5vw] text-[0.8vw] leading-7"
 							style={{
 								whiteSpace: "pre-line",
 								wordWrap: "break-word",

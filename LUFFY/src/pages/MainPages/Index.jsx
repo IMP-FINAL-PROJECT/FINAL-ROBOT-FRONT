@@ -12,7 +12,8 @@ import Time from "../../components/Main/Time"
 import Video from "../../assets/Icon/Luffy_Call.svg"
 import VideoIcon from "../../assets/Icon/VideoIcon.png"
 import meeting from "../../assets/Icon/meeting.png"
-
+import UserInfo from "../../components/Main/UserInfo"
+import Setting from "../../assets/Icon/Setting.png"
 
 export default function Index() {
   const { startdate } = useCounselStore();
@@ -92,13 +93,23 @@ export default function Index() {
           onHoverEnd={(event, info) => {setLuffycolor("bg-beige20")}} 
           className="col-span-2">
           <Link
-            to="luffy"
-            id="Luffy"
+            to="UserInfo"
+            id="UserInfo"
             className={`h-full w-full flex flex-col items-center justify-around `}
           >
-            <Luffy dday={dday} />
+            <UserInfo  />
             <p className="text-[1.5vw] mt-[0.3vw] text-black font-bold">내 정보</p>
           </Link>
+        </motion.div>
+        <motion.div whileHover={{ scale: 1.1 }} className="col-span-2">
+          <div
+            className="h-full flex flex-col items-center justify-around "
+          >
+            <div className="grow flex justify-center items-center ">
+              <img src={Setting} alt="Video" className='rounded-[50px] shadow-md w-[15vw] h-[15vw]' />
+            </div>
+            <p className="text-[1.5vw] mt-[0.3vw] text-black font-bold">설정</p>
+          </div>
         </motion.div>
        
         <motion.div 
@@ -106,8 +117,9 @@ export default function Index() {
           onHoverStart={(event, info) => {setVideocolor("bg-beige10")}} 
           onHoverEnd={(event, info) => {setVideocolor("bg-beige20")}} 
         
-            className={`h-full rounded-[20px] shadow-md col-span-4 justify-center items-center`}>
+            className={`h-full rounded-[20px]  col-span-4 justify-center items-center`}>
           <Video_Slide />
+          <p className="text-[1.5vw] mt-[0.3vw] text-black font-bold"></p>
         </motion.div>
 
        
