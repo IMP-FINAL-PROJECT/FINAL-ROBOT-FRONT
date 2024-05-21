@@ -1,0 +1,4 @@
+.rmscroll::-webkit-scrollbar {
+    display: none;
+  }
+  

@@ -16,6 +16,7 @@ const Modal = ({ z, onClose, children, dialogCss, isX }) => {
 		maxWidth: "90%",
 		zIndex: "10",
 	};
+	
 
 	return createPortal(
 		<div onClick={onClose} style={backdropStyle}>
