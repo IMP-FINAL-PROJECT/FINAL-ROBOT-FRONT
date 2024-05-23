@@ -1,0 +1,84 @@
+/* Calendar.css */
+.calendar-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4개월씩 한 줄로 설정 */
+    grid-template-rows: repeat(3, auto); /* 3줄로 설정 */
+    gap: 0.2vw;
+    width: 70vw; /* 전체 너비 조정 */
+  }
+  
+  .month-button {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+    width: 5vw;
+  }
+  
+  .month-button:hover {
+    transform: scale(1.05);
+  }
+  
+  .month-header {
+    font-size: 1.5vw;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .current-month .month-header {
+    color: #fd8680;
+  }
+  
+  .calendar-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem;
+    font-size: 0.8rem;
+  }
+  
+  .week {
+    display: flex;
+    width: 100%;
+  }
+  
+  .day, .empty-day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+  }
+  
+  .day {
+    font-size: 1.1rem;
+  }
+  
+  .today {
+    background-color: #fd8680;
+    color: white;
+    border-radius: 50%;
+  }
+  
+  .empty-day {
+    background: transparent;
+    border: none;
+  }
+
+.year-navigation {
+    align-self: flex-start;
+    margin-left: 8vw; /* 필요에 따라 조정 */
+}
+
+.year-navigation-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 100%;
+}
+
+.year-navigation-divider {
+    width: 100%;
+    border-top: 1px solid #ccc;
+    margin-top: -1.5vw;
+}
