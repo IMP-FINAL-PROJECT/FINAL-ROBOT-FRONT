@@ -1,7 +1,6 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useAnimate } from "framer-motion";
-import ModalRoute from "../../components/Modal/ModalRoute";
 import dayjs from "dayjs";
 import Calendar from "react-calendar";
 import highlight from "../../assets/diary/paintingLine.svg";
