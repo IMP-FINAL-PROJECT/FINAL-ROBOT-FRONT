@@ -28,9 +28,9 @@ export async function moodLoginFetch() {
 	return resData;
 }
 
-export async function userDeleteFetch({ userId, coupleId }) {
+export async function userDeleteFetch({ userId, counselId }) {
 	const res = await fetch(
-		`${import.meta.env.VITE_APP_BACKEND_URL}/user/delete/${userId}/${coupleId}`,
+		`${import.meta.env.VITE_APP_BACKEND_URL}/user/delete/${userId}/${counselId}`,
 		{
 			method: "DELETE",
 			headers: {
