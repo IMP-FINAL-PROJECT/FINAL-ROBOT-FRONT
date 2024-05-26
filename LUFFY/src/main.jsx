@@ -46,27 +46,28 @@ const router = createBrowserRouter([
 						path: "UserInfo",
 						element: <UserInfo />,
 					},
-					{
-						path: "diary",
-						element: <DiaryLayout />,
-						children: [
-							{
-								path: "month",
-								element: <DiaryMonthlyPage />,
-							},
-							{
-								path: "year",
-								element: <DiaryYearlyPage />,
-							},
-							{
-								path: "day",
-								element: <DiaryDailyPage />,
-							},
-						],
-					},
+					
 					
 				]
       },
+	  {
+		path: "diary",
+		element: <DiaryLayout />,
+		children: [
+			{
+				path: "month",
+				element: <DiaryMonthlyPage />,
+			},
+			{
+				path: "year",
+				element: <DiaryYearlyPage />,
+			},
+			{
+				path: "day",
+				element: <DiaryDailyPage />,
+			},
+		],
+	},
 	  {
 		path: "luffycall",
 		element: <LuffyCallPage />,
