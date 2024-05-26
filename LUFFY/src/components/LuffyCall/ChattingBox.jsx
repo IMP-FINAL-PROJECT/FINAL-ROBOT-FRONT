@@ -91,7 +91,7 @@ function ChattingBox({ meetingInfo, setMeetingInfo, chattingWindow, sendMessage,
 							newMeetingInfo.chattingHistory = [
 								...prevMeetingInfo.chattingHistory,
 								{
-									isLocal: true,
+									isLocal: 1,
 									message: msg,
 								},
 							];
@@ -141,7 +141,7 @@ function ChattingBox({ meetingInfo, setMeetingInfo, chattingWindow, sendMessage,
 										newMeetingInfo.chattingHistory = [
 											...prevMeetingInfo.chattingHistory,
 											{
-												isLocal: true,
+												isLocal: 1,
 												message: msg,
 											},
 										];

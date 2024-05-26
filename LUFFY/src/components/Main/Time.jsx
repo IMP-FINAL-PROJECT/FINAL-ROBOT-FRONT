@@ -19,7 +19,7 @@ function Time() {
 
     return (
         <motion.div 
-            className="bg-white  rounded-[20px] w-[22vw] h-[5vw]"
+            className="bg-beige20  rounded-[20px] w-[22vw] h-[5vw]"
             whileHover={{ scale: 1.1 }}
             style={{ 
                 transition: "transform 0.2s",

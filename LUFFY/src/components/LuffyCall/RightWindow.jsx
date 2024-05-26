@@ -45,7 +45,7 @@ function RightWindow({
         
       <div className="bg-white mx-4 rounded-t-2xl h-[10%]">
         <button
-          className={`w-[33%] h-full font-extrabold text-xl ${
+          className={`w-[100%] h-full font-extrabold text-xl ${
             meetingInfo.rightWindow == 0 ? "text-cherry" : ""
           }`}
           disabled={meetingInfo.rightWindow == 0}
@@ -59,7 +59,7 @@ function RightWindow({
         >
           채팅
         </button>
-        <button
+        {/* <button
           className={`w-[33%] h-full font-extrabold text-xl ${
             meetingInfo.rightWindow == 1 ? "text-cherry" : ""
           }  ${meetingInfo.clipReceived && "blink-effect"}`}
@@ -75,7 +75,7 @@ function RightWindow({
           클립
         </button>
         {/* 대본 기능 추가 */}
-        <button
+        {/*<button
           className={`w-[33%] h-full font-extrabold text-xl ${
             meetingInfo.rightWindow == 2 ? "text-cherry" : ""
           } ${meetingInfo.showMessage && "blink-effect"}`}
@@ -89,7 +89,8 @@ function RightWindow({
           }}
         >
           러피톡
-        </button>
+        </button> 
+        */}
         {/* {meetingInfo.showMessage && (
           <div className="absolute bottom-full right-12 translate-y-10">
             <div
