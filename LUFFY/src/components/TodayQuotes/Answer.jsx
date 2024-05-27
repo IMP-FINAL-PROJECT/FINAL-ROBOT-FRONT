@@ -1,10 +1,22 @@
 import { useState } from "react";
+
+/**
+ * 답변 컴포넌트
+ * @param {Object} props - 컴포넌트의 속성
+ * @param {Array} props.answer - 답변 배열
+ * @returns {JSX.Element}
+ */
 export default function Answer({ answer }) {
   const [selectName, setSelectName] = useState(answer[0]?.nickname);
 
+  /**
+   * 닉네임 선택 핸들러
+   * @param {string} name - 선택된 닉네임
+   */
   const handleSelectName = (name) => {
-    setSelectName((pre) => name);
+    setSelectName(name);
   };
+
   return (
     <>
       <div className="col-span-10 h-[20vw] flex flex-col items-center">
@@ -46,7 +58,7 @@ export default function Answer({ answer }) {
                   event.target.play();
                 }
               }}
-              className="w-full h-[16vw] rounded-lg object-cover "
+              className="w-full h-[16vw] rounded-lg object-cover"
               src={answer[0]?.filepath}
             ></video>
           ) : (
@@ -62,7 +74,7 @@ export default function Answer({ answer }) {
                   event.target.play();
                 }
               }}
-              className="w-full h-[16vw] rounded-lg object-cover "
+              className="w-full h-[16vw] rounded-lg object-cover"
               src={answer[1]?.filepath}
             ></video>
           )}

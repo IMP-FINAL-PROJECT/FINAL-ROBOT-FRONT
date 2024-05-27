@@ -1,10 +1,8 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { AnimatePresence, useAnimate } from "framer-motion";
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { default as NavModal } from "../../components/Modal/Modal";
 import dayjs from "dayjs";
-import dailyImg from "../../assets/diary/DiaryDailyPage.svg";
 import "./DiaryDailyPage.css";
 import ChatModal from "../../components/Modal/ChatModal";
 import MemoModal from "../../components/Modal/MemoModal";
@@ -33,7 +31,6 @@ const DiaryDailyPage = () => {
   const date = new Date(year, +month - 1, day);
   const dateFormat = dayjs(date).format("YYYY-MM-DD");
 
-
   const { moodId: myId } = useUserStore();
   const { startdate, counselId } = useCounselStore();
 
@@ -49,23 +46,39 @@ const DiaryDailyPage = () => {
   // memo 내용
   const [memo, setMemo] = useState("");
 
+  /**
+   * 선택한 채팅 기록을 표시하는 함수
+   * @param {Array} selChats - 선택된 채팅 기록
+   */
   function showChat(selChats) {
     setChats(selChats);
     setOpenChatModal(true);
   }
 
+  /**
+   * 채팅 모달을 닫는 함수
+   */
   function closeChatModal() {
     setOpenChatModal(false);
   }
 
+  /**
+   * 메모 모달을 표시하는 함수
+   */
   function showMemo() {
     setOpenMemoModal(true);
   }
 
+  /**
+   * 메모 모달을 닫는 함수
+   */
   function closeMemoModal() {
     setOpenMemoModal(false);
   }
 
+  /**
+   * 월별 보기로 이동하는 함수
+   */
   function moveToMonthly() {
     navigate({
       pathname: "/diary/month",
@@ -96,6 +109,13 @@ const DiaryDailyPage = () => {
     },
   });
 
+  /**
+   * 클립의 고정 상태를 토글하는 함수
+   * @param {number} clipId - 클립 ID
+   * @param {boolean} pinned - 클립의 고정 상태
+   * @param {number} mIdx - 미팅 인덱스
+   * @param {number} cIdx - 클립 인덱스
+   */
   function togglePinned(clipId, pinned, mIdx, cIdx) {
     animate(`#pin${clipId}`, { x: [0, -5, 0], y: [0, 5, 0] }, { duration: 0.3 });
     changePinMutate({ clipId, mode: !pinned, mIdx, cIdx });
@@ -126,6 +146,10 @@ const DiaryDailyPage = () => {
     }
   }, [memoData]);
 
+  /**
+   * 메모 데이터를 설정하는 함수
+   * @param {string} content - 메모 내용
+   */
   function handleMemoData(content) {
     setMemo(content);
   }
@@ -152,6 +176,12 @@ const DiaryDailyPage = () => {
     },
   });
 
+  /**
+   * 클립을 삭제하는 함수
+   * @param {number} clipId - 클립 ID
+   * @param {number} mIdx - 미팅 인덱스
+   * @param {number} cIdx - 클립 인덱스
+   */
   function handelDeleteClip(clipId, mIdx, cIdx) {
     if (confirm("정말 삭제하시겠어요?")) {
       deleteClipMutate({ clipId, mIdx, cIdx });
@@ -160,7 +190,7 @@ const DiaryDailyPage = () => {
 
   return (
     <>
-      <div  nav="/">
+      <div nav="/">
         <div
           className="flex flex-col  absolute h-[90%] ml-[0vw] mt-[2vw] w-[80%] items-center"
           ref={scope}
@@ -179,12 +209,10 @@ const DiaryDailyPage = () => {
             <span className="text-[1.5vw]">
                               {"당신의 긍정"}
                             </span>
-
           </div>
 
           {/* 미팅 타임라인, 채팅, 메모 */}
           <div className="grid grid-cols-3 w-full h-[90vh] gap-6">
-           
             {/* 미팅 타임라인 */}
             <div className="me-auto relative col-span-2  h-[80vh] w-full mt-[3vh]">
               <motion.ul
@@ -317,7 +345,6 @@ const DiaryDailyPage = () => {
             </div>
           </div>
         </div>
-
       </div>
       <AnimatePresence>
         {openChatModal && (

@@ -17,6 +17,12 @@ const constraints = {
   },
 };
 
+/**
+ * 오늘의 명언 녹화 컴포넌트
+ * @param {function} handleIsRecording - 녹화 상태 변경 핸들러
+ * @param {function} handleClickIsquoteBoxOpen - 인용구 박스 열기 핸들러
+ * @param {function} handleIsAnswered - 답변 완료 상태 핸들러
+ */
 export default function TodayRecoding({
   handleIsRecording,
   handleClickIsquoteBoxOpen,
@@ -37,86 +43,85 @@ export default function TodayRecoding({
   const { mutate } = useMutation({
     mutationFn: postVideoSave,
     onSuccess: (data) => {
-      // 뮤테이션이 성공한 후 실행할 작업
       alert("저장했습니다! 상담사의 답변을 기다려주세요!");
       closeModal();
-
       queryClient.invalidateQueries(["ansList", counselId]);
-
       handleClickIsquoteBoxOpen();
-
       handleIsAnswered();
-
     },
     onError: (error) => {
       alert("저장에 실패했어요. 다시 시도해주실래요?");
     },
   });
 
+  /**
+   * 미디어 스트림을 가져오는 함수
+   */
   async function getMedia() {
-    //
     const stream = await navigator.mediaDevices.getUserMedia(constraints);
     setMediaStream(stream);
-    console.log(mediaStream);
     videoOutput.current.srcObject = stream;
     videoOutput.current.onloadedmetadata = () => {
-      // HTMLVideoElement로 카메라의 화면을 출력하기 시작
       videoOutput.current.play();
     };
   }
 
-  // 녹화 시작 버튼 클릭 시 빌생하는 이벤트 핸들러 등록
+  /**
+   * 녹화를 시작하는 함수
+   */
   const startRecoding = () => {
-    setIsRecording((pre) => true);
+    setIsRecording(true);
     let mediaData = [];
 
-    // 1.MediaStream을 매개변수로 MediaRecorder 생성자를 호출
     mediaRecorder.current = new MediaRecorder(mediaStream, {
       mimeType: "video/webm; codecs=vp9, opus",
     });
 
-    // 2. 전달받는 데이터를 처리하는 이벤트 핸들러 등록
     mediaRecorder.current.ondataavailable = function (event) {
       if (event.data && event.data.size > 0) {
         mediaData.push(event.data);
-        console.log(mediaData);
       }
     };
-    // 3. 녹화 중지 이벤트 핸들러 등록
+
     mediaRecorder.current.onstop = function () {
       const blob = new Blob(mediaData, { type: "video/webm" });
       const url = window.URL.createObjectURL(blob);
-      setRecordedblob((pre) => blob);
+      setRecordedblob(blob);
       recodeOutput.current.src = url;
       recodeOutput.current.load();
       recodeOutput.current.oncanplaythrough = function () {
-        // 로드 완료되면 실행
         recodeOutput.current.play();
       };
       recodeOutput.current.onended = function () {
-        // 비디오 재생이 끝났을 때 URL 해제
         window.URL.revokeObjectURL(url);
       };
     };
 
-    // 4. 녹화 시작
     mediaRecorder.current.start();
   };
 
+  /**
+   * 녹화를 중지하는 함수
+   */
   const stopRecoding = () => {
-    setIsRecording((pre) => false);
+    setIsRecording(false);
     if (mediaRecorder.current) {
-      // 5. 녹화 중지
       mediaRecorder.current.stop();
       mediaRecorder.current = null;
-      setModalOpen((pre) => true);
+      setModalOpen(true);
     }
   };
 
+  /**
+   * 모달을 닫는 함수
+   */
   const closeModal = () => {
-    setModalOpen((pre) => false);
+    setModalOpen(false);
   };
 
+  /**
+   * 녹화된 비디오를 저장하는 함수
+   */
   const videoSave = () => {
     if (confirm("영상을 저장할까요?")) {
       const answerDto = {

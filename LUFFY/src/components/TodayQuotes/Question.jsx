@@ -5,6 +5,14 @@ import Answer from "./Answer";
 import dayjs from "dayjs";
 import { motion } from "framer-motion";
 
+/**
+ * 오늘의 질문 컴포넌트
+ * @param {number} reply - 답변 상태 (0: 미작성, 1: 상대방 대기, 2: 작성 완료)
+ * @param {function} handleClickIsquoteBoxOpen - 명언 박스 열기 핸들러
+ * @param {Array} answer - 답변 내용
+ * @param {function} handleIsAnswered - 답변 완료 상태 핸들러
+ * @returns {JSX.Element}
+ */
 export default function Question({
   reply,
   handleClickIsquoteBoxOpen,
@@ -29,11 +37,11 @@ export default function Question({
     if (reply === 1) {
       handleIsAnswered();
     }
-  }, [reply]);
+  }, [reply, handleIsAnswered]);
 
   const [isOpened, setIsOpened] = useState(false);
   let questioncss = `transition-[height] duration-500 w-[42vw] bg-white mt-[1vw] rounded-[15px] text-[1vw] shadow-md ${
-    isOpened && reply
+    isOpened && reply === 2
       ? "h-[25vw] flex flex-col overflow-y-auto"
       : "h-[8.2vw] hover:bg-[#EFEFEF]"
   }`;
@@ -43,6 +51,7 @@ export default function Question({
       setIsOpened((pre) => !pre);
     }
   };
+
   const handleBackAnswer = () => {
     if (reply === 0) {
       if (confirm("오늘의 답변을 작성하지 않았어요! 작성하러 갈까요?")) {
@@ -52,6 +61,7 @@ export default function Question({
       alert("상대방이 아직 답변을 작성하지 않았어요! 조금 기다릴까요?");
     }
   };
+
   return (
     <>
       <motion.div id="question" className={questioncss}>

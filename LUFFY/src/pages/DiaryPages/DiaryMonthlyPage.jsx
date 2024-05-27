@@ -12,6 +12,12 @@ import "./Calendar.css";
 import { useQuery } from "@tanstack/react-query";
 import { meetingFetch } from "../../services/diaryService";
 
+/**
+ * DiaryMonthlyPage 컴포넌트는 월간 다이어리 페이지를 렌더링합니다.
+ *
+ * @component
+ * @returns {JSX.Element}
+ */
 const DiaryMonthlyPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [scope, animate] = useAnimate();
@@ -119,7 +125,6 @@ const DiaryMonthlyPage = () => {
   });
 
   return (
-    // Diary 재사용 모달
     <div>
       <div
         className="flex flex-col h-[100%] mt-[8vh]  w-[100%] items-center "
@@ -226,7 +231,6 @@ const DiaryMonthlyPage = () => {
                 texts += item.text + "\n";
               }
             });
-
 
             return (
               <div className=" flex items-center justify-center mt-[1vw]">

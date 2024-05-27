@@ -7,24 +7,32 @@ import useMoodStore from "../../stores/useMoodStore";
 import { useMutation } from "@tanstack/react-query";
 import { useSearchParams } from "react-router-dom";
 import { getAccessToken } from "../../utils/Mood";
+
+/**
+ * Signup 컴포넌트는 사용자 가입을 위한 폼을 렌더링합니다.
+ *
+ * @component
+ * @returns {JSX.Element}
+ */
 const Signup = () => {
 	const navigate = useNavigate();
 	const [hasCode, setHasCode] = useState(true);
 	const [codeChecked, setCodeChecked] = useState(false);
 	const codeRef = useRef();
 	const today = dayjs();
-	const { birth,gender,id,name,} = useMoodStore();
+	const { birth, gender, id, name } = useMoodStore();
 	const [searchParams, setSearchParams] = useSearchParams();
-	const [disabledSingup, setDisabledSignup] = useState(false);
+	const [disabledSignup, setDisabledSignup] = useState(false);
 
 	const code = searchParams.get("code");
-    console.log(birth)
+	console.log(birth);
+
 	useEffect(() => {
 		if (code) {
 			setHasCode(false);
 			codeRef.current.value = code;
 		}
-	}, []);
+	}, [code]);
 
 	const { mutate } = useMutation({
 		mutationFn: checkByCode,
@@ -33,11 +41,11 @@ const Signup = () => {
 		},
 	});
 
-	function checkCode() {
+	const checkCode = () => {
 		mutate(codeRef.current.value);
-	}
+	};
 
-	function handleSubmit(event) {
+	const handleSubmit = (event) => {
 		event.preventDefault();
 
 		const fd = new FormData(event.target);
@@ -45,11 +53,11 @@ const Signup = () => {
 
 		console.log(JSON.stringify(data));
 
-		async function fetchJoin() {
+		const fetchJoin = async () => {
 			setDisabledSignup(true);
-			console.log(id)
-			const token = await getAccessToken(id)
-            console.log(token)
+			console.log(id);
+			const token = await getAccessToken(id);
+			console.log(token);
 			const response = await fetch(`${import.meta.env.VITE_APP_BACKEND_URL}/user/join`, {
 				method: "POST",
 				headers: {
@@ -65,10 +73,10 @@ const Signup = () => {
 			} else {
 				navigate("/user/login");
 			}
-		}
+		};
 
 		fetchJoin();
-	}
+	};
 
 	return (
 		<div className="flex justify-center items-center h-full text-[2vw]">
@@ -94,10 +102,10 @@ const Signup = () => {
 								type="text"
 								name="nickname"
 								id="nickname"
-                                value={name}
+								value={name}
 								className="input input-bordered w-[100%] border-solid border-2 border-text-gray"
 								required
-                                readOnly
+								readOnly
 							/>
 						</motion.label>
 					</div>
@@ -116,10 +124,10 @@ const Signup = () => {
 								type="email"
 								name="email"
 								id="email"
-                                value={id}
+								value={id}
 								className="input input-bordered w-full border-solid border-2 border-text-gray"
 								required
-                                readOnly
+								readOnly
 							/>
 						</motion.label>
 					</div>
@@ -138,11 +146,11 @@ const Signup = () => {
 								type="date"
 								name="birthday"
 								id="birthday"
-                                value={birth}
+								value={birth}
 								className="input input-bordered w-full border-solid border-2 border-text-gray"
 								max={today.format("YYYY-MM-DD")}
 								required
-                                readOnly
+								readOnly
 							/>
 						</motion.label>
 					</div>
@@ -159,7 +167,7 @@ const Signup = () => {
 										type="checkbox"
 										checked={!hasCode}
 										onChange={() => setHasCode(!hasCode)}
-										className="checkbox bg-white w-[1.5vw] h-[1.5vw] mx-[1vw] "
+										className="checkbox bg-white w-[1.5vw] h-[1.5vw] mx-[1vw]"
 									/>
 								</div>
 							</div>
@@ -208,7 +216,7 @@ const Signup = () => {
 								value={today.format("YYYY-MM-DD")}
 								disabled={hasCode}
 								required
-                                readOnly
+								readOnly
 							/>
 						</motion.label>
 					</div>
@@ -216,7 +224,7 @@ const Signup = () => {
 					<div className="flex items-center">
 						<button
 							className="btn bg-subpuple text-white w-full hover:bg-subpuple10 hover:text-cherry"
-							disabled={(hasCode && !codeChecked) || disabledSingup}
+							disabled={(hasCode && !codeChecked) || disabledSignup}
 						>
 							가입 완료
 						</button>
@@ -226,4 +234,5 @@ const Signup = () => {
 		</div>
 	);
 };
+
 export default Signup;

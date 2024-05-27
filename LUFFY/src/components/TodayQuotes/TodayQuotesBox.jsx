@@ -1,13 +1,19 @@
 import useUserStore from "../../stores/useUserStore";
 import Question from "./Question";
 
+/**
+ * 오늘의 명언 박스 컴포넌트
+ * @param {function} handleClickIsquoteBoxOpen - 명언 박스 열기 핸들러
+ * @param {Array} ansList - 답변 리스트
+ * @param {function} handleIsAnswered - 답변 완료 상태 핸들러
+ * @returns {JSX.Element}
+ */
 export default function TodayQuotesBox({
   handleClickIsquoteBoxOpen,
   ansList,
   handleIsAnswered,
 }) {
   const { moodId, nickname } = useUserStore();
-  console.log(nickname);
 
   const questionList = ansList.answerList.map((answer, idx) => {
     if (idx === 0) {
@@ -68,13 +74,11 @@ export default function TodayQuotesBox({
   });
 
   return (
-    <>
-      <div
-        id="TodayQuotesBox"
-        className="mt-[1vw] h-[29vw] rounded-[20px] overflow-y-auto"
-      >
-        {questionList}
-      </div>
-    </>
+    <div
+      id="TodayQuotesBox"
+      className="mt-[1vw] h-[29vw] rounded-[20px] overflow-y-auto"
+    >
+      {questionList}
+    </div>
   );
 }

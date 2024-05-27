@@ -1,5 +1,10 @@
 import LuffyTimeLine from "./LuffyTimeLine";
 
+/**
+ * LuffyExp 컴포넌트는 상담 내역을 타임라인 형식으로 보여줍니다.
+ * 
+ * @component
+ */
 export default function LuffyExp() {
   return (
     <>
@@ -12,6 +17,7 @@ export default function LuffyExp() {
             id="LuffyTimeLine"
             className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical mt-[1vw] overflow-y-auto h-[30vw]"
           >
+            {/* LuffyTimeLine 컴포넌트를 타임라인 안에 렌더링합니다. */}
             <LuffyTimeLine />
           </ul>
         </div>
